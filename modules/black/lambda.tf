@@ -60,7 +60,7 @@ resource "aws_lambda_function" "my_lambda" {
 
   environment {
     variables = {
-      SUBNET_ID = aws_subnet.subnet.id
+      SUBNET_ID = aws_subnet.black_subnet.id
     }
   }
 }

@@ -2,4 +2,5 @@
 *rsa*
 temp*
 *.pem
+*.pub
 backup*
