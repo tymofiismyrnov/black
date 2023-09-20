@@ -52,6 +52,7 @@ resource "aws_lambda_function" "my_lambda" {
   handler       = "index.lambda_handler"
   runtime       = "python3.11"
   role          = aws_iam_role.lambda_execution_role.arn
+  timeout       = 10
 
   # Define your Lambda function code here
   filename = var.python_script_path
