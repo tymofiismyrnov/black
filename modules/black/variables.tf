@@ -3,6 +3,11 @@ variable "region" {
   type        = string
 }
 
+variable "availability_zone" {
+  description = "Subnet AZ"
+  type        = string
+}
+
 variable "aws_access_key" {
   description = "AWS Access Key"
   type        = string
@@ -10,11 +15,6 @@ variable "aws_access_key" {
 
 variable "aws_secret_key" {
   description = "AWS Secret Key"
-  type        = string
-}
-
-variable "availability_zone" {
-  description = "Subnet AZ"
   type        = string
 }
 
@@ -35,10 +35,9 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "default_ami" {
+variable "ami_id" {
   description = "Default AMI"
   type        = string
-  default     = "ami-0ccf0745a25b6c3a4" # Winows Server 2022 base
 }
 
 variable "ssh_key" {

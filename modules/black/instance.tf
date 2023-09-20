@@ -4,7 +4,7 @@ resource "aws_key_pair" "black_key_pair" {
 }
 
 resource "aws_instance" "basic_instance" {
-  ami               = var.default_ami
+  ami               = var.ami_id
   instance_type     = var.instance_type
   key_name          = aws_key_pair.black_key_pair.key_name
   get_password_data = true

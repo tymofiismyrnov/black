@@ -1,10 +1,28 @@
-module "example" {
+locals {
+  environments = {
+    for env in var.env_list : env.region => {
+      region            = env.region
+      availability_zone = env.availability_zone
+      ssh_key           = env.ssh_key
+      ps_script_path    = env.ps_script_path
+      ami_id            = env.ami_id
+      aws_access_key    = env.aws_access_key
+      aws_secret_key    = env.aws_secret_key
+    }
+  }
+}
+
+module "black_envs" {
+  for_each = local.environments
+
   source = "./modules/black"
 
-  region            = "eu-central-1" 
-  availability_zone = "eu-central-1a"
-  ssh_key           = "./public.pem"
-  ps_script_path    = "./startup.ps1"
-  aws_access_key    = "AKIAGGBESDCSDFSDSDSD" # Example key
-  aws_secret_key    = "CmkasdmAKssdmk123KSD/ASDC55fsd/iR5" # Example key
+  region            = each.value.region
+  availability_zone = each.value.availability_zone
+  ssh_key           = each.value.ssh_key
+  ps_script_path    = each.value.ps_script_path
+  ami_id            = each.value.ami_id
+  aws_access_key    = each.value.aws_access_key
+  aws_secret_key    = each.value.aws_secret_key
+
 }
