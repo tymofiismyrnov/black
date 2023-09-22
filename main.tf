@@ -1,3 +1,9 @@
+provider "aws" {
+  region     = var.config.region
+  access_key = var.config.aws_access_key
+  secret_key = var.config.aws_secret_key
+}
+
 module "black_envs" {
 
   source = "./modules/black"
